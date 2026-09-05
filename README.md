@@ -24,6 +24,18 @@ Experience the fully deployed **interactive 3D science lab** — featuring virtu
 
 ---
 
+## 📱 Android App (100% Offline)
+
+**Download: [ScienceLab3D-v1.2.0.apk](https://github.com/rudra496/sciencelab3d/releases/latest) — v1.2.0, ~6 MB, Android 7.0+**
+
+The complete lab as a native Android app via Capacitor. **All 40 experiments + their detail guides are bundled inside the APK** — every simulation runs fully offline with zero internet connection and no sign-ups.
+
+- Install: download the APK on your phone and open it (allow "install from this source" if asked)
+- Signed release build (`com.rudrasarker.sciencelab3d`), minSdk 24, targetSdk 36
+- A debug build is also attached to the release for developers
+
+---
+
 ## 🌟 What is ScienceLab 3D?
 
 **ScienceLab 3D** is a fully interactive, browser-based 3D science simulation platform covering **Physics**, **Chemistry**, **Biology**, and **Mathematics**. With **40+ experiments**, real-time controls, and stunning 3D visualizations powered by Three.js, it makes learning science intuitive, engaging, and fun — no downloads, no accounts required.
