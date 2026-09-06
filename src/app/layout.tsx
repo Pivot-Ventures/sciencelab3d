@@ -10,11 +10,11 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const SITE_URL = "https://sciencelab-two.vercel.app";
-const SITE_NAME = "ScienceLab 3D";
-const SITE_TITLE = "ScienceLab 3D — Interactive STEM Education | 40+ Virtual Science Experiments";
+const SITE_URL = "https://easi.pivotventures.tech/museum/physics";
+const SITE_NAME = "EASI Physics";
+const SITE_TITLE = "EASI Physics — Interactive 3D Physics Lab | Virtual Experiments";
 const SITE_DESCRIPTION =
-  "ScienceLab 3D — Free interactive STEM education platform with 40+ virtual experiments in physics, chemistry & biology. 3D visualizations, real-time data analysis. Learn science by doing.";
+  "EASI Physics — Interactive 3D physics experiments for classroom learning. Pendulum, projectile motion, waves, circuits, and more. Based on ScienceLab 3D (MIT).";
 
 export const metadata: Metadata = {
   title: {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Rudra Sarker", url: "https://rudra496.github.io/site" }],
   creator: "Rudra Sarker",
-  publisher: "Rudra Sarker",
+  publisher: "Pivot Ventures · EASI",
   category: "Education",
   metadataBase: new URL(SITE_URL),
   alternates: {
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ScienceLab 3D — Interactive 3D Science Experiments",
+        alt: "EASI Physics — Interactive 3D Physics Experiments",
       },
     ],
   },

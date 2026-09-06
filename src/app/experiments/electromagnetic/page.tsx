@@ -1,6 +1,5 @@
 import ElectromagneticPage from "@/experiments/electromagnetic-page";
 
-export const dynamic = 'force-dynamic';
 
 export default function ElectromagneticRoute() { return <ElectromagneticPage />; }
 

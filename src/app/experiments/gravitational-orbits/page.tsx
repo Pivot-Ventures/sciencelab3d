@@ -1,6 +1,5 @@
 import GravitationalOrbitsPage from "@/experiments/gravitational-orbits-page";
 
-export const dynamic = 'force-dynamic';
 
 export default function GravitationalOrbitsRoute() { return <GravitationalOrbitsPage />; }
 

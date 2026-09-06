@@ -12,7 +12,6 @@
 
 import ProjectileMotionPage from "@/experiments/projectile-motion-page";
 
-export const dynamic = 'force-dynamic';
 
 export default function ProjectileMotionRoute() {
   return <ProjectileMotionPage />;

@@ -1,6 +1,5 @@
 import DopplerPage from "@/experiments/doppler-page";
 
-export const dynamic = 'force-dynamic';
 
 export default function DopplerRoute() { return <DopplerPage />; }
 

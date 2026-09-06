@@ -489,3 +489,14 @@ export const categories = [
     description: "Numbers, shapes, and patterns",
   },
 ];
+
+/** Feature flag: museum embed shows Physics hub only (other subject code retained). */
+export const PHYSICS_FIRST = true;
+
+export const visibleCategories = PHYSICS_FIRST
+  ? categories.filter((c) => c.id === "physics")
+  : categories;
+
+export const visibleExperiments = PHYSICS_FIRST
+  ? experiments.filter((e) => e.category === "physics")
+  : experiments;

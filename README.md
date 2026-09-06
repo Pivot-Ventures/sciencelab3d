@@ -1,3 +1,13 @@
+# EASI Physics (ScienceLab 3D fork)
+
+**EASI Physics** — Pivot Ventures classroom embed of [ScienceLab 3D](https://github.com/rudra496/sciencelab3d) (MIT License, © Rudra Sarker).
+
+- Live: https://easi.pivotventures.tech/museum/physics/
+- Upstream credit preserved in LICENSE.
+- Physics-first landing; other STEM subject code retained but de-emphasized.
+
+---
+
 # 🔬 ScienceLab 3D
 
 <div align="center">

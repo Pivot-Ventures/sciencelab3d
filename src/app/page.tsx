@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { experiments, categories } from "@/data/experiments";
+import { experiments, categories, visibleCategories, visibleExperiments, PHYSICS_FIRST } from "@/data/experiments";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Star, Moon, Sun, Mail, Globe,
   Search, X, ChevronDown, ArrowRight,
 } from "lucide-react";
+
+/** Next basePath for static museum embed (raw <a> tags need this). */
+const BASE = "/museum/physics";
 
 // Favorites utilities
 function getFavorites(): string[] {
@@ -42,13 +45,13 @@ function Navbar({ theme, toggleTheme }: { theme: string; toggleTheme: () => void
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <a
-          href="/"
+          href={`${BASE}/`}
           className="text-lg font-bold bg-linear-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent"
         >
-          ScienceLab 3D
+          EASI Physics
         </a>
         <div className="hidden md:flex gap-2">
-          {categories.map((cat) => (
+          {visibleCategories.map((cat) => (
             <a
               key={cat.id}
               href={`#experiments`}
@@ -98,18 +101,18 @@ function HeroSection() {
         className="relative z-10"
       >
         <div className="text-xs sm:text-sm font-medium text-blue-300/70 mb-4 tracking-[0.3em] uppercase">
-          Interactive 3D Science Platform
+          EASI · Interactive 3D Physics Lab
         </div>
         <h1
           className="text-5xl md:text-7xl font-black mb-6 bg-linear-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent leading-tight"
           style={{ filter: "drop-shadow(0 0 30px rgba(139,92,246,0.3))" }}
         >
-          ScienceLab 3D
+          EASI Physics
         </h1>
         <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-          Explore 40+ interactive experiments across Physics, Chemistry, Biology,
-          and Mathematics. Control variables, watch simulations, and learn
-          science like never before.
+          Explore interactive 3D physics experiments — pendulum, projectile motion,
+          waves, circuits, orbits, and more. Control variables, watch simulations,
+          and learn by doing.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <a
@@ -135,9 +138,9 @@ function HeroSection() {
         className="relative z-10 mt-16 flex gap-8 md:gap-16 flex-wrap justify-center"
       >
         {[
-          { num: "40+", label: "Experiments" },
-          { num: "4", label: "Subjects" },
+          { num: "10", label: "Physics sims" },
           { num: "3D", label: "Interactive" },
+          { num: "NCDC", label: "Classroom ready" },
           { num: "∞", label: "Learning" },
         ].map((s) => (
           <div key={s.label} className="text-center">
@@ -222,7 +225,7 @@ function ExperimentCard({ exp, index, onToggleFavorite }: {
 
   return (
     <motion.a
-      href={`/experiments/${exp.id}`}
+      href={`${BASE}/experiments/${exp.id}/`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -303,7 +306,7 @@ function ExperimentCard({ exp, index, onToggleFavorite }: {
 
 // ========== HOME PAGE ==========
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState<string>(PHYSICS_FIRST ? "physics" : "all");
   const [search, setSearch] = useState("");
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -328,7 +331,7 @@ export default function Home() {
   };
 
   const filtered = useMemo(() => {
-    let result = experiments.filter((exp) => {
+    let result = visibleExperiments.filter((exp) => {
       const matchCat =
         activeCategory === "all" || exp.category === activeCategory;
       const matchSearch =
@@ -404,6 +407,7 @@ export default function Home() {
 
           {/* Category filters */}
           <div className="flex gap-3 justify-start md:justify-center overflow-x-auto pb-2 px-4 -mx-4 md:mx-0 md:px-0 scrollbar-hide">
+            {!PHYSICS_FIRST && (
             <button
               onClick={() => {
                 setActiveCategory("all");
@@ -424,6 +428,7 @@ export default function Home() {
                 />
               )}
             </button>
+            )}
 
             {/* Favorites filter */}
             <button
@@ -452,7 +457,7 @@ export default function Home() {
               )}
             </button>
 
-            {categories.map((cat) => (
+            {visibleCategories.map((cat) => (
               <CategoryBadge
                 key={cat.id}
                 category={cat}
@@ -527,7 +532,7 @@ export default function Home() {
               {
                 icon: "🎯",
                 title: "Choose",
-                desc: "Pick from 40+ experiments across 4 scientific subjects",
+                desc: "Pick a physics experiment — motion, waves, electricity, gravity",
               },
               {
                 icon: "🎛️",
@@ -563,8 +568,8 @@ export default function Home() {
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto px-4 py-12 text-center">
         <div className="glass rounded-2xl p-8 md:p-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Explore Science?</h2>
-          <p className="text-gray-400 mb-6">40+ free interactive 3D experiments. No downloads, no sign-ups.</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Explore Physics?</h2>
+          <p className="text-gray-400 mb-6">Interactive 3D physics lab for EASI learners. No downloads, no sign-ups.</p>
           <a
             href="#experiments"
             className="inline-block px-8 py-3 bg-linear-to-r from-blue-600 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-blue-500/25"
@@ -579,21 +584,18 @@ export default function Home() {
         <div className="h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent mb-12" />
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 text-left">
-            {/* Brand */}
             <div>
               <h3 className="text-lg font-bold bg-linear-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-3">
-                ScienceLab 3D
+                EASI Physics
               </h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Free interactive 3D science experiments for Physics, Chemistry, Biology &amp; Mathematics.
+                Interactive 3D physics experiments for EASI classrooms. Fork of ScienceLab 3D (MIT).
               </p>
             </div>
-
-            {/* Quick Links */}
             <div>
               <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Quick Links</h4>
               <div className="space-y-2">
-                {categories.map((cat) => (
+                {visibleCategories.map((cat) => (
                   <a
                     key={cat.id}
                     href="#experiments"
@@ -604,72 +606,44 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* Connect */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">Connect</h4>
+              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-3">EASI</h4>
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href="https://rudra496.github.io/site"
+                  href="https://easi.pivotventures.tech"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-1.5 glass rounded-full text-gray-400 hover:text-white hover:scale-105 transition-all duration-200 text-sm"
                 >
                   <Globe size={14} />
-                  <span>Portfolio</span>
+                  <span>easi.pivotventures.tech</span>
                 </a>
                 <a
-                  href="https://github.com/rudra496"
+                  href="https://github.com/Pivot-Ventures/sciencelab3d"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-3 py-1.5 glass rounded-full text-gray-400 hover:text-white hover:scale-105 transition-all duration-200 text-sm"
                 >
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/rudrasarker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-1.5 glass rounded-full text-gray-400 hover:text-blue-400 hover:scale-105 transition-all duration-200 text-sm"
-                >
-                  <span>LinkedIn</span>
-                </a>
-                <a
-                  href="https://www.facebook.com/share/1AHSdHLeoz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-1.5 glass rounded-full text-gray-400 hover:text-blue-500 hover:scale-105 transition-all duration-200 text-sm"
-                >
-                  <span>Facebook</span>
-                </a>
-                <a
-                  href="mailto:rudrasarker125@gmail.com"
-                  className="flex items-center gap-2 px-3 py-1.5 glass rounded-full text-gray-400 hover:text-red-400 hover:scale-105 transition-all duration-200 text-sm"
-                >
-                  <Mail size={14} />
-                  <span>Email</span>
+                  <span>Source (MIT)</span>
                 </a>
               </div>
             </div>
           </div>
-
-          {/* Copyright */}
-          <div className="border-t border-white/5 pt-6">
-            <p className="text-gray-600 mb-1">
-              Built with ❤️ by{" "}
-              <a
-                href="https://rudra496.github.io/site"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                Rudra Sarker
-              </a>{" "}
-              — ScienceLab 3D © 2026
-            </p>
-          </div>
+          <p className="text-gray-600 text-xs">
+            Based on{" "}
+            <a
+              href="https://github.com/rudra496/sciencelab3d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 underline"
+            >
+              ScienceLab 3D
+            </a>{" "}
+            by Rudra Sarker — MIT License. EASI Physics © 2026 Pivot Ventures.
+          </p>
         </div>
       </footer>
+
     </main>
   );
 }
