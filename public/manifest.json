@@ -1,21 +1,22 @@
 {
-  "name": "ScienceLab 3D",
-  "short_name": "ScienceLab3D",
-  "description": "Explore 40+ interactive 3D science experiments in Physics, Chemistry, Biology, and Mathematics.",
-  "start_url": "/",
+  "name": "EASI Physics",
+  "short_name": "EASI Physics",
+  "description": "Interactive 3D physics experiments for EASI Science Museum.",
+  "start_url": "/museum/physics/",
+  "scope": "/museum/physics/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#4f8fff",
+  "background_color": "#fbf7ef",
+  "theme_color": "#2f6b4f",
   "orientation": "any",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/museum/physics/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
-  "categories": ["education", "science", "utilities"],
+  "categories": ["education", "science"],
   "lang": "en",
   "dir": "ltr"
 }

@@ -8,13 +8,16 @@ export const viewport: Viewport = {
   userScalable: false,
   interactiveWidget: "resizes-content",
   viewportFit: "cover",
+  themeColor: "#fbf7ef",
+  colorScheme: "light",
 };
 
+const BASE = "/museum/physics";
 const SITE_URL = "https://easi.pivotventures.tech/museum/physics";
 const SITE_NAME = "EASI Physics";
-const SITE_TITLE = "EASI Physics — Interactive 3D Physics Lab | Virtual Experiments";
+const SITE_TITLE = "EASI Physics — Interactive 3D Physics Lab";
 const SITE_DESCRIPTION =
-  "EASI Physics — Interactive 3D physics experiments for classroom learning. Pendulum, projectile motion, waves, circuits, and more. Based on ScienceLab 3D (MIT).";
+  "Interactive 3D physics experiments for EASI classrooms. Pendulum, projectile motion, waves, circuits, orbits, and more.";
 
 export const metadata: Metadata = {
   title: {
@@ -23,44 +26,19 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "science lab",
+    "EASI Physics",
+    "science museum",
     "virtual experiments",
     "STEM education",
     "physics",
-    "chemistry",
-    "biology",
     "3D",
     "interactive",
-    "education",
-    "science education",
-    "3D science experiments",
-    "interactive learning",
-    "physics simulations",
-    "chemistry experiments",
-    "biology education",
-    "mathematics visualization",
-    "virtual science lab",
-    "online science lab",
-    "free science experiments",
-    "interactive 3D simulations",
     "pendulum simulation",
     "projectile motion",
-    "DNA replication",
-    "periodic table",
-    "gas laws",
-    "cell structure",
-    "Mandelbrot fractal",
-    "Fourier transform",
-    "science for students",
-    "high school physics",
-    "college chemistry",
-    "biology visualization",
-    "math explorer",
-    "Rudra Sarker",
-    "sciencelab3d",
+    "physics lab",
   ],
-  authors: [{ name: "Rudra Sarker", url: "https://rudra496.github.io/site" }],
-  creator: "Rudra Sarker",
+  authors: [{ name: "Pivot Ventures · EASI" }],
+  creator: "Pivot Ventures · EASI",
   publisher: "Pivot Ventures · EASI",
   category: "Education",
   metadataBase: new URL(SITE_URL),
@@ -74,107 +52,40 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     siteName: SITE_NAME,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "EASI Physics — Interactive 3D Physics Experiments",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
-    creator: "@rudra496",
-    site: "@rudra496",
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-touch-icon.png",
+    icon: [{ url: `${BASE}/favicon.svg`, type: "image/svg+xml" }],
   },
-  manifest: "/manifest.json",
+  manifest: `${BASE}/manifest.json`,
   robots: {
     index: true,
     follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    // Replace with actual Google Search Console verification code when available
-    // google: "your-actual-google-verification-code",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "@id": `${SITE_URL}/#webapp`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      description: SITE_DESCRIPTION,
-      applicationCategory: "EducationalApplication",
-      operatingSystem: "All",
-      browserRequirements: "Requires JavaScript. Requires HTML5.",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
-      author: {
-        "@type": "Person",
-        "@id": `${SITE_URL}/#author`,
-        name: "Rudra Sarker",
-        url: "https://rudra496.github.io/site",
-        sameAs: [
-          "https://rudra496.github.io/site",
-          "https://www.linkedin.com/in/rudrasarker",
-          "https://www.facebook.com/share/1AHSdHLeoz/",
-          "https://github.com/rudra496",
-          "mailto:rudrasarker125@gmail.com",
-        ],
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE_URL}/#website`,
-      url: SITE_URL,
-      name: SITE_NAME,
-      description: SITE_DESCRIPTION,
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/?search={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-    {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      founder: {
-        "@type": "Person",
-        name: "Rudra Sarker",
-        url: "https://rudra496.github.io/site",
-      },
-    },
-  ],
+  "@type": "WebApplication",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "All",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Pivot Ventures · EASI",
+    url: "https://easi.pivotventures.tech",
+  },
 };
 
 export default function RootLayout({
@@ -183,21 +94,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light" style={{ colorScheme: "light" }}>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href={`${BASE}/favicon.svg`} type="image/svg+xml" />
+        <link rel="manifest" href={`${BASE}/manifest.json`} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="m-0 p-0">{children}</body>
+      <body className="m-0 p-0 light">{children}</body>
     </html>
   );
 }

@@ -160,7 +160,7 @@ export function EnergyBar({ kinetic, potential, total, maxEnergy }: EnergyBarPro
         </div>
         <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
           <div
-            className="h-full bg-linear-to-r from-blue-600 to-blue-400 transition-all duration-100"
+            className="h-full bg-linear-to-r from-[#2f6b4f] to-[#1b6b4a] transition-all duration-100"
             style={{ width: `${(potential / max) * 100}%` }}
           />
         </div>
@@ -268,8 +268,8 @@ export type ButtonVariant = "primary" | "secondary" | "danger" | "success" | "wa
 
 const BUTTON_STYLES: Record<ButtonVariant, { bg: string; hover: string; shadow: string }> = {
   primary: {
-    bg: "bg-gradient-to-r from-blue-600 to-blue-700",
-    hover: "hover:from-blue-500 hover:to-blue-600",
+    bg: "bg-gradient-to-r from-[#2f6b4f] to-[#1f4d43]",
+    hover: "hover:from-[#1b6b4a] hover:to-[#2f6b4f]",
     shadow: "shadow-blue-500/40"
   },
   secondary: {

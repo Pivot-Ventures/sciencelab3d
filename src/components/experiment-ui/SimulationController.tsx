@@ -212,9 +212,9 @@ export function SimulationController({
               value={speed}
               onChange={(e) => onSpeedChange(parseFloat(e.target.value))}
               className="w-full h-1.5 bg-gray-700 rounded-full appearance-none cursor-pointer touch-none"
-              style={{ accentColor: "#8b5cf6" }}
+              style={{ accentColor: "#2f6b4f" }}
             />
-            <span className="text-xs sm:text-sm font-mono text-purple-400 min-w-10 text-center flex-shrink-0">
+            <span className="text-xs sm:text-sm font-mono text-[#2f6b4f] min-w-10 text-center flex-shrink-0">
               {speed.toFixed(1)}x
             </span>
           </div>

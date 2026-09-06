@@ -135,7 +135,7 @@ export function ExperimentContainer({
   if (!canRender) return null;
 
   return (
-    <div ref={containerRef} className="fixed inset-0 w-screen h-screen overflow-hidden" style={{ background: `radial-gradient(ellipse at center, #1a1a3e 0%, #0a0a1e 50%, #050510 100%)` }}>
+    <div ref={containerRef} className="fixed inset-0 w-screen h-screen overflow-hidden" style={{ background: "#0f1a17" }}>
       <Canvas
         ref={canvasRef}
         shadows
@@ -207,22 +207,22 @@ export function ExperimentContainer({
         <group>{children}</group>
       </Canvas>
 
-      {/* Header Bar with dark theme */}
-      <div className="absolute top-0 left-0 right-0 z-10 p-3 sm:p-4" style={{ background: 'linear-gradient(to bottom, rgba(10, 10, 30, 0.95) 0%, rgba(10, 10, 30, 0.7) 70%, transparent 100%)', backdropFilter: 'blur(12px)' }}>
+      {/* EASI light chrome header over 3D canvas */}
+      <div className="absolute top-0 left-0 right-0 z-10 p-3 sm:p-4" style={{ background: "linear-gradient(to bottom, rgba(251,247,239,0.96) 0%, rgba(251,247,239,0.85) 65%, transparent 100%)", backdropFilter: "blur(10px)" }}>
         <div className="flex items-center justify-between max-w-7xl mx-auto px-2 sm:px-0">
           <button
             onClick={() => router.push("/")}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm font-medium transition-all duration-200 hover:scale-105 backdrop-blur-sm shadow-lg flex-shrink-0"
+            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-[#e2ddd0] text-[#1f4d43] text-sm font-medium transition-colors hover:border-[#2f6b4f] hover:bg-[#e3f3ea] shadow-sm flex-shrink-0"
           >
             <ArrowLeft size={16} />
             <span className="hidden sm:inline">Lab</span>
           </button>
           <div className="flex-1 min-w-0 mx-2 sm:mx-4">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight truncate drop-shadow-lg">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#14201c] tracking-tight truncate">
               {title}
             </h1>
             {description && (
-              <p className="text-xs sm:text-sm text-gray-300 mt-1 hidden sm:block drop-shadow">
+              <p className="text-xs sm:text-sm text-[#3d4f48] mt-1 hidden sm:block">
                 {description}
               </p>
             )}
@@ -241,8 +241,8 @@ export function ExperimentContainer({
             className={`
               px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-xs sm:text-sm transition-all duration-200
               ${showControls
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
-                : "bg-white/20 text-white hover:bg-white/30 border border-white/30 backdrop-blur-sm shadow-lg"}
+                ? "bg-[#2f6b4f] text-white shadow-lg"
+                : "bg-white/90 text-[#1f4d43] hover:bg-white border border-[#e2ddd0] shadow-sm"}
             `}
           >
             <Settings size={14} className="hidden sm:inline" />
@@ -255,8 +255,8 @@ export function ExperimentContainer({
             className={`
               px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg font-medium text-xs sm:text-sm transition-all duration-200
               ${showData
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/50"
-                : "bg-white/20 text-white hover:bg-white/30 border border-white/30 backdrop-blur-sm shadow-lg"}
+                ? "bg-[#1f4d43] text-white shadow-lg"
+                : "bg-white/90 text-[#1f4d43] hover:bg-white border border-[#e2ddd0] shadow-sm"}
             `}
           >
             <BarChart3 size={14} className="hidden sm:inline" />
@@ -268,12 +268,12 @@ export function ExperimentContainer({
       {/* Controls Panel */}
       {controls && showControls && (
         <div
-          className="absolute top-0 right-0 z-30 h-full w-full sm:w-80 md:w-96 bg-white/95 backdrop-blur-xl border-l border-purple-500/30 shadow-2xl overflow-y-auto"
+          className="absolute top-0 right-0 z-30 h-full w-full sm:w-80 md:w-96 bg-white/95 backdrop-blur-xl border-l border-[#e2ddd0] shadow-2xl overflow-y-auto"
           style={{ WebkitOverflowScrolling: "touch", maxHeight: "100vh" }}
         >
           <div className="p-4 sm:p-6">
-            <div className="flex items-center justify-between mb-4 sm:mb-6 sticky top-0 bg-white/95 backdrop-blur-sm py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b border-purple-200">
-              <h2 className="text-lg sm:text-xl font-bold text-purple-600">Controls</h2>
+            <div className="flex items-center justify-between mb-4 sm:mb-6 sticky top-0 bg-white/95 backdrop-blur-sm py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 border-b border-[#e2ddd0]">
+              <h2 className="text-lg sm:text-xl font-bold text-[#2f6b4f]">Controls</h2>
               <button onClick={() => setShowControls(false)} className="text-gray-600 hover:text-gray-900 transition-colors text-xl sm:text-2xl p-1">✕</button>
             </div>
             {controls}
@@ -286,13 +286,13 @@ export function ExperimentContainer({
         <div className={`
           absolute bottom-16 sm:bottom-20 left-2 sm:left-4 z-20
           bg-white/95 backdrop-blur-xl
-          border border-blue-200 rounded-xl shadow-2xl
+          border border-[#e2ddd0] rounded-xl shadow-2xl
           p-2 sm:p-4 max-w-full sm:max-w-sm transition-all duration-300
           ${isMobile ? "max-h-[40vh] overflow-y-auto" : ""}
         `}>
-          <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 pb-1.5 sm:pb-2 border-b border-blue-200">
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500 animate-pulse" />
-            <h3 className="text-xs sm:text-sm font-semibold text-blue-600">Real-time Data</h3>
+          <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3 pb-1.5 sm:pb-2 border-b border-[#e2ddd0]">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#2f6b4f] animate-pulse" />
+            <h3 className="text-xs sm:text-sm font-semibold text-[#2f6b4f]">Real-time Data</h3>
           </div>
           {dataPanel}
         </div>
@@ -301,7 +301,7 @@ export function ExperimentContainer({
       {/* Details Panel */}
       {details && showDetails && (
         <div className="absolute top-20 right-4 z-40 w-80 sm:w-96 max-h-[70vh] bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden transition-all duration-300">
-          <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 p-3 sm:p-4 border-b border-gray-200 shrink-0">
+          <div className="sticky top-0 bg-[#2f6b4f] p-3 sm:p-4 border-b border-gray-200 shrink-0">
             <div className="flex items-center justify-between">
               <h2 className="text-base sm:text-lg font-bold text-white">Experiment Details</h2>
               <button
@@ -353,9 +353,9 @@ export function ExperimentContainer({
               value={simulationBar.speed}
               onChange={(e) => simulationBar.onSpeedChange(parseFloat(e.target.value))}
               className="w-16 sm:w-24 h-1.5 bg-gray-700 rounded-full appearance-none cursor-pointer touch-none"
-              style={{ accentColor: "#8b5cf6" }}
+              style={{ accentColor: "#2f6b4f" }}
             />
-            <span className="text-xs sm:text-sm font-mono text-purple-400 min-w-10 text-center">
+            <span className="text-xs sm:text-sm font-mono text-[#c4a35a] min-w-10 text-center">
               {simulationBar.speed.toFixed(1)}x
             </span>
           </div>
@@ -363,7 +363,7 @@ export function ExperimentContainer({
       )}
 
       {/* Instructions hint */}
-      <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 text-[10px] sm:text-xs text-gray-400 bg-black/60 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg backdrop-blur-sm hidden sm:block">
+      <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-10 text-[10px] sm:text-xs text-[#3d4f48] bg-[#fbf7ef]/90 border border-[#e2ddd0] px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg backdrop-blur-sm hidden sm:block">
         <span>🖱️ Drag to rotate • Scroll to zoom • Right-click to pan</span>
       </div>
     </div>

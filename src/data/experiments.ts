@@ -19,7 +19,7 @@ export const experiments: Experiment[] = [
     description:
       "Explore simple harmonic motion by controlling pendulum length, mass, and initial angle. Observe how gravity and tension create periodic oscillation.",
     icon: "🔄",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["SHM", "Gravity", "Period", "Amplitude"],
   },
   {
@@ -30,7 +30,7 @@ export const experiments: Experiment[] = [
     description:
       "Launch projectiles at different angles and velocities. Visualize parabolic trajectories and understand range, height, and time of flight.",
     icon: "🎯",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Kinematics", "Trajectory", "Range", "Velocity"],
   },
   {
@@ -41,7 +41,7 @@ export const experiments: Experiment[] = [
     description:
       "Witness wave-particle duality. Fire photons through two slits and observe the interference pattern that proves quantum mechanics.",
     icon: "🌊",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Quantum", "Wave-Particle Duality", "Interference", "Photons"],
   },
   {
@@ -52,7 +52,7 @@ export const experiments: Experiment[] = [
     description:
       "Create two wave sources and watch constructive and destructive interference patterns form in real-time 3D space.",
     icon: "〰️",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Waves", "Superposition", "Interference", "Frequency"],
   },
   {
@@ -63,7 +63,7 @@ export const experiments: Experiment[] = [
     description:
       "Place charges in 3D space and visualize electric field lines, potential surfaces, and force vectors interactively.",
     icon: "⚡",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Electric Field", "Coulomb's Law", "Potential", "Vectors"],
   },
   {
@@ -74,7 +74,7 @@ export const experiments: Experiment[] = [
     description:
       "Attach masses to springs with adjustable stiffness and damping. Explore Hooke's law, resonance, and energy conservation.",
     icon: "🔔",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Hooke's Law", "Resonance", "Energy", "Damping"],
   },
   {
@@ -85,7 +85,7 @@ export const experiments: Experiment[] = [
     description:
       "Simulate planetary orbits by adjusting mass, velocity, and distance. Observe elliptical, circular, and escape trajectories.",
     icon: "🪐",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Gravity", "Orbits", "Kepler's Laws", "Escape Velocity"],
   },
   {
@@ -96,7 +96,7 @@ export const experiments: Experiment[] = [
     description:
       "Move a sound source and observer in 3D. Watch wavefronts compress and expand as frequency shifts in real-time.",
     icon: "🔊",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Sound", "Frequency Shift", "Wavefronts", "Relativity"],
   },
   {
@@ -107,7 +107,7 @@ export const experiments: Experiment[] = [
     description:
       "Shoot light rays through different media. Control angle of incidence, refractive index, and see Snell's law in action.",
     icon: "💡",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Optics", "Snell's Law", "Total Internal Reflection", "Prism"],
   },
   {
@@ -118,7 +118,7 @@ export const experiments: Experiment[] = [
     description:
       "Build circuits with resistors, batteries, and LEDs. Adjust voltage and resistance to see current flow with animated electrons.",
     icon: "🔋",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     topics: ["Electricity", "Ohm's Law", "Resistance", "Current"],
   },
 
@@ -464,7 +464,7 @@ export const categories = [
     id: "physics" as const,
     name: "Physics",
     icon: "⚛️",
-    color: "#4f8fff",
+    color: "#2f6b4f",
     description: "Forces, motion, waves, and energy",
   },
   {

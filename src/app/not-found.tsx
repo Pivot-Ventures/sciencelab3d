@@ -1,55 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FlaskConical, ArrowLeft, Home } from "lucide-react";
+import { ArrowLeft, Home } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 overflow-hidden relative" style={{ background: "var(--bg-primary)" }}>
-      <div className="absolute top-20 left-[20%] w-72 h-72 bg-purple-500/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-20 right-[20%] w-72 h-72 bg-blue-500/10 rounded-full blur-[100px]" />
-
-      <motion.div
-        className="text-center relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.div
-          className="mb-6 inline-block"
-          animate={{ rotate: [0, -5, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[var(--bg-primary)]">
+      <div className="text-center max-w-md">
+        <div
+          className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center text-white text-2xl font-bold"
+          style={{ background: "var(--easi-green)" }}
         >
-          <div className="w-24 h-24 mx-auto rounded-full bg-purple-500/10 flex items-center justify-center">
-            <FlaskConical className="text-purple-400" size={48} />
-          </div>
-        </motion.div>
-
-        <h1 className="text-8xl md:text-9xl font-black bg-linear-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-          404
-        </h1>
-        <h2 className="text-xl md:text-2xl font-bold mb-2">Experiment Not Found</h2>
-        <p className="text-gray-400 max-w-md mx-auto mb-8">
-          This experiment hasn&apos;t been discovered yet. It might be floating in an alternate dimension,
-          or the lab assistant may have misplaced it.
+          Φ
+        </div>
+        <h1 className="text-5xl font-black text-[var(--easi-green)] mb-2">404</h1>
+        <h2 className="text-xl font-bold text-[var(--ink)] mb-2">Experiment not found</h2>
+        <p className="text-[var(--ink-2)] text-sm mb-8">
+          This experiment isn&apos;t available in the EASI Physics lab.
         </p>
-
-        <div className="flex gap-4 justify-center flex-wrap">
+        <div className="flex gap-3 justify-center flex-wrap">
           <Link
             href="/"
-            className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-blue-500/25"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-white text-sm"
+            style={{ background: "var(--easi-green)" }}
           >
-            <Home size={18} /> Back to Lab
+            <Home size={16} /> Back to Lab
           </Link>
           <Link
             href="/#experiments"
-            className="flex items-center gap-2 px-6 py-3 glass rounded-full font-semibold hover:scale-105 transition-transform"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm border border-[var(--border)] bg-white text-[var(--ink)]"
           >
-            <ArrowLeft size={18} /> Browse Experiments
+            <ArrowLeft size={16} /> Browse
           </Link>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

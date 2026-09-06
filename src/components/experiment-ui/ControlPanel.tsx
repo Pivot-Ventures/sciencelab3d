@@ -197,13 +197,13 @@ export function ControlPanel({
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
     >
-      <div className="w-full bg-linear-to-br from-gray-900/95 to-purple-900/90 backdrop-blur-xl border border-purple-500/30 rounded-xl shadow-2xl overflow-hidden">
+      <div className="w-full bg-linear-to-br from-white to-[#fbf7ef] backdrop-blur-xl border border-[#e2ddd0] rounded-xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-2 sm:p-4 border-b border-purple-500/30 bg-gray-900/50">
-          <h3 className="text-sm sm:text-base font-bold text-purple-400">{title}</h3>
+        <div className="flex items-center justify-between p-2 sm:p-4 border-b border-[#e2ddd0] bg-[#fbf7ef]">
+          <h3 className="text-sm sm:text-base font-bold text-[#2f6b4f]">{title}</h3>
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base p-1"
+            className="text-[#6b7c74] hover:text-[#1f4d43] transition-colors text-sm sm:text-base p-1"
             aria-label={isCollapsed ? "Expand" : "Collapse"}
           >
             {isCollapsed ? "▼" : "▲"}
@@ -244,7 +244,7 @@ export function ControlPanel({
                 {showReset && (
                   <button
                     onClick={handleReset}
-                    className="py-2 px-3 sm:py-2.5 sm:px-4 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium text-xs sm:text-sm transition-all shadow-lg"
+                    className="py-2 px-3 sm:py-2.5 sm:px-4 bg-[#1f4d43] hover:bg-[#2f6b4f] text-white rounded-lg font-medium text-xs sm:text-sm transition-all shadow-sm"
                     aria-label="Reset"
                   >
                     <span className="text-sm sm:hidden">🔄</span>
@@ -258,8 +258,8 @@ export function ControlPanel({
             {showSpeed && (
               <div className="space-y-2">
                 <div className="flex justify-between text-xs sm:text-sm">
-                  <span className="text-gray-400">Speed</span>
-                  <span className="font-mono text-purple-400">
+                  <span className="text-[#3d4f48]">Speed</span>
+                  <span className="font-mono text-[#2f6b4f]">
                     {speed.toFixed(1)}x
                   </span>
                 </div>
@@ -270,8 +270,8 @@ export function ControlPanel({
                   step="0.1"
                   value={speed}
                   onChange={(e) => handleSpeedChange(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer touch-none"
-                  style={{ accentColor: "#8b5cf6" }}
+                  className="w-full h-2 bg-[#e2ddd0] rounded-lg appearance-none cursor-pointer touch-none"
+                  style={{ accentColor: "#2f6b4f" }}
                   onMouseDown={(e) => e.stopPropagation()}
                   onTouchStart={(e) => e.stopPropagation()}
                 />
@@ -285,7 +285,7 @@ export function ControlPanel({
 
             {/* Custom Controls */}
             {children && (
-              <div className="pt-3 sm:pt-4 border-t border-purple-500/30 space-y-2 sm:space-y-3">
+              <div className="pt-3 sm:pt-4 border-t border-[#e2ddd0] space-y-2 sm:space-y-3">
                 {children}
               </div>
             )}
